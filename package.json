@@ -1,0 +1,28 @@
+{
+  "name": "3300-project-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "backend": "nodemon index.js",
+    "frontend": "npm run dev --prefix frontend",
+    "dev": "concurrently -k \"npm run backend\" \"npm run frontend\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hayden50/3300-project-2.git"
+  },
+  "author": "Hayden Rieder, Jacob Green, Nathan Haileyesus, Ali Ibrahim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hayden50/3300-project-2/issues"
+  },
+  "homepage": "https://github.com/Hayden50/3300-project-2#readme",
+  "dependencies": {
+    "concurrently": "^7.5.0",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20"
+  }
+}

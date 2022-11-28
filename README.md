@@ -11,9 +11,8 @@
 ## INSTALLED DEPENDENCIES:
     FRONTEND:
         - axios
-        - unit.js
     BACKEND:
         - express
         - nodemon
         - concurrently
-        - unit.js
+        - jest

@@ -1,11 +1,10 @@
 import express from "express";
+import apiRoutes from "./routes/api.js";
 
 const app = express();
 const PORT = 8000;
 
-app.get("/api", (req, res) => {
-  res.send("Hello World!");
-});
+app.use("/api", apiRoutes);
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

@@ -17,6 +17,7 @@
         - axios
         - formik
     BACKEND:
+        - axios
         - express
         - nodemon
         - concurrently

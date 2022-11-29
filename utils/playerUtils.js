@@ -18,6 +18,12 @@ export const calcStats = (allGames) => {
     fga += currGame.fga;
   }
 
+  if (totalGames === 0) {
+    totalGames = 1;
+    fgm = 0;
+    fga = 1;
+  }
+
   const playerStats = {
     avgPoints: Math.round((points / totalGames) * 10) / 10,
     avgAssists: Math.round((assists / totalGames) * 10) / 10,

@@ -22,8 +22,13 @@ router.get("/", (req, res) => {
 
 router.post("/player", async (req, res) => {
   const id = await getPlayerId(req);
-  console.log(id);
-  res.send("Getting Player ID");
+  if (id === -1) {
+    res.send("No Player Found");
+  } else {
+    const playerStats = await getPlayerStats(id);
+    console.log(playerStats);
+    res.send("Stats Calculated");
+  }
 });
 
 const getPlayerId = async (req) => {
@@ -52,6 +57,57 @@ const getPlayerId = async (req) => {
   playerArr.filter((obj) => obj.firstname.toLowerCase() === firstName);
   if (playerArr.length === 0) return -1;
   return playerArr[0].id;
+};
+
+const getPlayerStats = async (id) => {
+  const cfg = {
+    method: "GET",
+    url: "https://api-nba-v1.p.rapidapi.com/players/statistics",
+    params: { id: id, season: "2020" },
+    headers: {
+      "X-RapidAPI-Key": process.env.API_KEY,
+      "X-RapidAPI-Host": "api-nba-v1.p.rapidapi.com",
+      "Accept-encoding": "false",
+    },
+  };
+
+  const allGames = await axios
+    .request(cfg)
+    .then((res) => res.data.response)
+    .catch((err) => console.log(err));
+
+  const playerStats = calcStats(allGames);
+  return playerStats;
+};
+
+const calcStats = (allGames) => {
+  let points, assists, rebounds, blocks, steals, fgm, fga;
+  let totalGames = allGames.length;
+  for (let i = 0; i < allGames.length; i++) {
+    let currGame = allGames[i];
+    if (currGame !== null && currGame.points !== null) {
+      points += currGame.points;
+    }
+    assists += currGame.assists;
+    blocks += currGame.totReb;
+    rebounds += currGame.blocks;
+    steals += currGame.steals;
+    fgm += currGame.fgm;
+    fga += currGame.fga;
+  }
+
+  console.log(allGames[10].points);
+
+  const playerStats = {
+    avgPoints: points / totalGames,
+    avgAssists: assists / totalGames,
+    avgRebounds: rebounds / totalGames,
+    avgBlocks: blocks / totalGames,
+    avgSteals: steals / totalGames,
+    fgPct: fgm / fga,
+  };
+
+  return playerStats;
 };
 
 export default router;

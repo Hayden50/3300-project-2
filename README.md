@@ -20,3 +20,4 @@
         - nodemon
         - concurrently
         - jest
+        - dotenv

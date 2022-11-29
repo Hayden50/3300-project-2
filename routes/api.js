@@ -20,4 +20,9 @@ router.get("/", (req, res) => {
     .catch((err) => console.log(err));
 });
 
+router.post("/pmtest", (req, res) => {
+  console.log(req);
+  res.send("Hello World!!!!");
+});
+
 export default router;

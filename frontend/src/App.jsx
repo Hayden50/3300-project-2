@@ -3,13 +3,10 @@ import { useState } from "react";
 
 const App = () => {
 
-  const data = {
-    firstName: "Hayden",
-    lastName: "Rieder"
-  };
+  const data = {name: "LeBron James"};
 
   const handleClick = () => {
-    axios.post('/api/pmtest', data).then(res => {
+    axios.post('/api/player', data).then(res => {
       console.log(res.data);
     }).catch(err => console.log(err));
   }

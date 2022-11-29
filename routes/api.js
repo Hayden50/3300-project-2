@@ -1,42 +1,36 @@
 import express from "express";
 import axios from "axios";
 import * as dotenv from "dotenv";
+import { calcStats, splitNames } from "../utils/playerUtils.js";
+
 dotenv.config();
 const router = express.Router();
 router.use(express.json());
 
-router.get("/", (req, res) => {
-  axios
-    .request({
-      method: "get",
-      url: "https://api-nba-v1.p.rapidapi.com/seasons",
-      headers: {
-        "x-rapidapi-key": process.env.API_KEY,
-        "x-rapidapi-host": "api-nba-v1.p.rapidapi.com",
-        "Accept-encoding": "false",
-      },
-    })
-    .then((response) => res.send(response.data))
-    .catch((err) => console.log(err));
-});
+router.get("/", (req, res) => res.send("BASE ADDRESS"));
 
 router.post("/player", async (req, res) => {
-  const id = await getPlayerId(req);
-  if (id === -1) {
-    res.send("No Player Found");
+  const playerOneName = req.body.name1;
+  const playerTwoName = req.body.name2;
+
+  const id1 = await getPlayerId(playerOneName);
+  const id2 = await getPlayerId(playerTwoName);
+
+  if (id1 === -1 && id2 === -1) {
+    res.send("Both Players Not Found");
+  } else if (id1 === -1) {
+    res.send("Player One Missing");
+  } else if (id2 === -1) {
+    res.send("Player Two Missing");
   } else {
-    const playerStats = await getPlayerStats(id);
-    console.log(playerStats);
-    res.send("Stats Calculated");
+    const playerOneStats = await getPlayerStats(id1);
+    const playerTwoStats = await getPlayerStats(id2);
+    res.send([playerOneStats, playerTwoStats]);
   }
 });
 
-const getPlayerId = async (req) => {
-  let nameString = req.body.name.toLowerCase();
-  const names = nameString.split(" ");
-  const firstName = names[0];
-  const lastName = names[1];
-  let playerArr;
+const getPlayerId = async (name) => {
+  const [firstName, lastName] = splitNames(name);
 
   const cfg = {
     method: "GET",
@@ -49,7 +43,7 @@ const getPlayerId = async (req) => {
     },
   };
 
-  playerArr = await axios
+  let playerArr = await axios
     .request(cfg)
     .then((res) => res.data.response)
     .catch((err) => console.log(err));
@@ -77,40 +71,6 @@ const getPlayerStats = async (id) => {
     .catch((err) => console.log(err));
 
   const playerStats = calcStats(allGames);
-  return playerStats;
-};
-
-const calcStats = (allGames) => {
-  let points = 0,
-    assists = 0,
-    rebounds = 0,
-    blocks = 0,
-    steals = 0,
-    fgm = 0,
-    fga = 0;
-  let totalGames = allGames.length;
-  for (let i = 0; i < allGames.length; i++) {
-    let currGame = allGames[i];
-    if (currGame !== null && currGame.points !== null) {
-      points += currGame.points;
-    }
-    assists += currGame.assists;
-    blocks += currGame.totReb;
-    rebounds += currGame.blocks;
-    steals += currGame.steals;
-    fgm += currGame.fgm;
-    fga += currGame.fga;
-  }
-
-  const playerStats = {
-    avgPoints: Math.round((points / totalGames) * 10) / 10,
-    avgAssists: Math.round((assists / totalGames) * 10) / 10,
-    avgRebounds: Math.round((rebounds / totalGames) * 10) / 10,
-    avgBlocks: Math.round((blocks / totalGames) * 10) / 10,
-    avgSteals: Math.round((steals / totalGames) * 10) / 10,
-    fgPct: Math.round((fgm / fga) * 10) / 10,
-  };
-
   return playerStats;
 };
 

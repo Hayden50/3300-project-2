@@ -15,6 +15,7 @@
 ## INSTALLED DEPENDENCIES:
     FRONTEND:
         - axios
+        - formik
     BACKEND:
         - express
         - nodemon

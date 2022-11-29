@@ -81,7 +81,13 @@ const getPlayerStats = async (id) => {
 };
 
 const calcStats = (allGames) => {
-  let points, assists, rebounds, blocks, steals, fgm, fga;
+  let points = 0,
+    assists = 0,
+    rebounds = 0,
+    blocks = 0,
+    steals = 0,
+    fgm = 0,
+    fga = 0;
   let totalGames = allGames.length;
   for (let i = 0; i < allGames.length; i++) {
     let currGame = allGames[i];
@@ -96,15 +102,13 @@ const calcStats = (allGames) => {
     fga += currGame.fga;
   }
 
-  console.log(allGames[10].points);
-
   const playerStats = {
-    avgPoints: points / totalGames,
-    avgAssists: assists / totalGames,
-    avgRebounds: rebounds / totalGames,
-    avgBlocks: blocks / totalGames,
-    avgSteals: steals / totalGames,
-    fgPct: fgm / fga,
+    avgPoints: Math.round((points / totalGames) * 10) / 10,
+    avgAssists: Math.round((assists / totalGames) * 10) / 10,
+    avgRebounds: Math.round((rebounds / totalGames) * 10) / 10,
+    avgBlocks: Math.round((blocks / totalGames) * 10) / 10,
+    avgSteals: Math.round((steals / totalGames) * 10) / 10,
+    fgPct: Math.round((fgm / fga) * 10) / 10,
   };
 
   return playerStats;

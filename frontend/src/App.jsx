@@ -1,14 +1,18 @@
 import axios from "axios"
-import { useState } from "react";
 
 const App = () => {
 
-  const [val, setVal] = useState('');
-  axios.get('/api/').then(res => setVal(res.data)).then(res => console.log(res));
+  const data = {name1: "LeBron James", name2: "Ja Morant"};
+
+  const handleClick = () => {
+    axios.post('/api/player', data).then(res => {
+      console.log(res.data);
+    }).catch(err => console.log(err));
+  }
 
   return (
     <div>
-      {val}
+      <button onClick={handleClick}>Click Me</button>
     </div>
   )
 }

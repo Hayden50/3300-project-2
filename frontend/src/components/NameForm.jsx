@@ -1,5 +1,6 @@
 import {Formik, Field, Form} from 'formik';
 import axios from 'axios';
+import "./NameForm.css";
 
 const NameForm = props => {
 
@@ -18,12 +19,12 @@ const NameForm = props => {
 
     return (
         <div>
-            <p>Input Player Names</p>
+            <p className='formik-title'>NBA Player Comparison</p>
             <Formik initialValues={initVals} onSubmit = {values => {handleSubmit(values)}}>
-                <Form>
-                    <Field id="name1" name="name1" placeholder="Ja Morant" />
-                    <Field id="name2" name="name2" placeholder="Trae Young" />
-                    <button type = "submit">Compare</button>
+                <Form className='formik-form'>
+                    <Field className="formik-field" id="name1" name="name1" placeholder="Ja Morant" />
+                    <button type = "submit" className='compare-button'>Compare</button>
+                    <Field className="formik-field" id="name2" name="name2" placeholder="Kyle Kuzma" />
                 </Form>
             </Formik>
         </div>

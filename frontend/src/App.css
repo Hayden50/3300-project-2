@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #ebedf3;
+  background-color: #efefef;
 }
 
 .parent {
@@ -20,26 +20,25 @@ body {
 
 .div1 {
   grid-area: 1 / 1 / 2 / 6;
-  border-width: 1px;
-  border-style: solid;
 }
 .div2 {
   grid-area: 2 / 1 / 5 / 3;
-  border-width: 1px;
-  border-style: solid;
 }
 .div3 {
   grid-area: 2 / 3 / 5 / 4;
-  border-width: 1px;
-  border-style: solid;
 }
 .div4 {
   grid-area: 2 / 4 / 5 / 6;
-  border-width: 1px;
-  border-style: solid;
 }
 .div5 {
   grid-area: 5 / 1 / 6 / 6;
   border-width: 1px;
   border-style: solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.div5-sentence {
+  font-style: italic;
 }

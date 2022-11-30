@@ -24,6 +24,7 @@ router.post("/player", async (req, res) => {
 
   const id1 = await getPlayerId(playerOneName);
   const id2 = await getPlayerId(playerTwoName);
+  console.log(id1, id2);
 
   if (id1 === -1 && id2 === -1) {
     res.send("Both Players Not Found");

@@ -9,12 +9,12 @@ const App = () => {
   const [playerTwoData, setPlayerTwoData] = useState(null);
 
   const temp = {
-    avgPoints: 10,
-    avgAssists: 10,
-    avgRebounds: 10,
-    avgBlocks: 10,
-    avgSteals: 10,
-    fgPct: 1,
+    avgPoints: 0,
+    avgAssists: 0,
+    avgRebounds: 0,
+    avgBlocks: 0,
+    avgSteals: 0,
+    fgPct: 0,
   }
   JSON.stringify(temp);
 
@@ -30,7 +30,9 @@ const App = () => {
       <div className='div4'>
         <StatDisplay playerData={playerTwoData === null ? temp : playerTwoData}/>
       </div>
-      <div className='div5'>5</div>
+      <div className='div5'>
+        <p className="div5-sentence">This data is representative of the 2021 season</p>
+      </div>
     </div>
   )
 }

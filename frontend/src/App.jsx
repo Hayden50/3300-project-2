@@ -1,12 +1,14 @@
 import StatDisplay from "./components/StatDisplay";
 import NameForm from "./components/NameForm";
+import Comparator from "./components/Comparator";
 import { useState } from "react";
 import "./App.css"
- 
+
 const App = () => {
 
   const [playerOneData, setPlayerOneData] = useState(null);
   const [playerTwoData, setPlayerTwoData] = useState(null);
+  const [comparison, setComparison] = useState(null);
 
   const temp = {
     avgPoints: 0,
@@ -21,12 +23,14 @@ const App = () => {
   return (
     <div className = "parent">
       <div className='div1'>
-        <NameForm setPlayerOneData={setPlayerOneData} setPlayerTwoData={setPlayerTwoData}/>
+        <NameForm setPlayerOneData={setPlayerOneData} setPlayerTwoData={setPlayerTwoData} setDiffData={setComparison}/>
       </div>
       <div className='div2'>
         <StatDisplay playerData={playerOneData === null ? temp : playerOneData}/>
       </div>
-      <div className='div3'></div>
+      <div className='div3'>
+        <Comparator diffData={comparison === null ? temp : comparison} />
+      </div>
       <div className='div4'>
         <StatDisplay playerData={playerTwoData === null ? temp : playerTwoData}/>
       </div>

@@ -30,7 +30,7 @@ export const calcStats = (allGames) => {
     avgRebounds: Math.round((rebounds / totalGames) * 10) / 10,
     avgBlocks: Math.round((blocks / totalGames) * 10) / 10,
     avgSteals: Math.round((steals / totalGames) * 10) / 10,
-    fgPct: Math.round((fgm / fga) * 100 * 10) / 10,
+    fgPct: Math.round((fgm / fga) * 1000) / 10,
   };
 
   return playerStats;
@@ -40,4 +40,17 @@ export const splitNames = (fullName) => {
   fullName = fullName.toLowerCase();
   const names = fullName.split(" ");
   return [names[0], names[1]];
+};
+
+export const getDiff = (p1, p2) => {
+  const diff = {
+    avgPoints: Math.round((p1.avgPoints - p2.avgPoints) * 10) / 10,
+    avgAssists: Math.round((p1.avgAssists - p2.avgAssists) * 10) / 10,
+    avgRebounds: Math.round((p1.avgRebounds - p2.avgRebounds) * 10) / 10,
+    avgBlocks: Math.round((p1.avgBlocks - p2.avgBlocks) * 10) / 10,
+    avgSteals: Math.round((p1.avgSteals - p2.avgSteals) * 10) / 10,
+    fgPct: Math.round((p1.fgPct - p2.fgPct) * 10) / 10,
+  };
+
+  return diff;
 };

@@ -14,6 +14,7 @@ const NameForm = props => {
             console.log(JSON.stringify(res.data[0]));
             props.setPlayerOneData(res.data[0]);
             props.setPlayerTwoData(res.data[1]);
+            props.setDiffData(res.data[2]);
         }).catch(err => console.log(err));
     };
 

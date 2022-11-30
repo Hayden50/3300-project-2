@@ -11,8 +11,8 @@ export const calcStats = (allGames) => {
     let currGame = allGames[i];
     points += currGame.points;
     assists += currGame.assists;
-    blocks += currGame.totReb;
-    rebounds += currGame.blocks;
+    blocks += currGame.blocks;
+    rebounds += currGame.totReb;
     steals += currGame.steals;
     fgm += currGame.fgm;
     fga += currGame.fga;
@@ -30,7 +30,7 @@ export const calcStats = (allGames) => {
     avgRebounds: Math.round((rebounds / totalGames) * 10) / 10,
     avgBlocks: Math.round((blocks / totalGames) * 10) / 10,
     avgSteals: Math.round((steals / totalGames) * 10) / 10,
-    fgPct: Math.round((fgm / fga) * 10) / 10,
+    fgPct: Math.round((fgm / fga) * 100 * 10) / 10,
   };
 
   return playerStats;

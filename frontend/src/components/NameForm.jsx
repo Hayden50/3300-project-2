@@ -19,12 +19,12 @@ const NameForm = props => {
 
     return (
         <div>
-            <p className='formik-title'>NBA Player Comparison</p>
+            <p className='formik-title'>NBA Per-Game Player Comparison</p>
             <Formik initialValues={initVals} onSubmit = {values => {handleSubmit(values)}}>
                 <Form className='formik-form'>
                     <Field className="formik-field" id="name1" name="name1" placeholder="Ja Morant" />
                     <button type = "submit" className='compare-button'>Compare</button>
-                    <Field className="formik-field" id="name2" name="name2" placeholder="Kyle Kuzma" />
+                    <Field className="formik-field" id="name2" name="name2" placeholder="LeBron James" />
                 </Form>
             </Formik>
         </div>

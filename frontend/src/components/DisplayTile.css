@@ -1,0 +1,47 @@
+.tile-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 8vh;
+  align-items: center;
+  border-radius: 5px;
+  border-size: 0px;
+  background-color: #a9a9a9;
+  transition-duration: 0.25s;
+}
+
+.tile-body:hover {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 22.5px;
+  margin-right: 22.5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 9vh;
+  align-items: center;
+  border-radius: 10px;
+  border-size: 0px;
+  background-color: #caebf2;
+  transition-duration: 0.25s;
+}
+
+.tile-title {
+  margin-left: 8px;
+  font-weight: bold;
+  font-size: 25px;
+  font-style: italic;
+  color: white;
+}
+
+.tile-data {
+  margin-right: 8px;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 25px;
+  color: #ff3b3f;
+}

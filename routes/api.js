@@ -1,7 +1,7 @@
 import express from "express";
 import axios from "axios";
 import * as dotenv from "dotenv";
-import { calcStats, splitNames } from "../utils/playerUtils.js";
+import { calcStats, splitNames, getDiff } from "../utils/playerUtils.js";
 
 /**
  * Sets up router and .env file for use
@@ -34,7 +34,8 @@ router.post("/player", async (req, res) => {
   } else {
     const playerOneStats = await getPlayerStats(id1);
     const playerTwoStats = await getPlayerStats(id2);
-    res.send([playerOneStats, playerTwoStats]);
+    const playerDifference = getDiff(playerOneStats, playerTwoStats);
+    res.send([playerOneStats, playerTwoStats, playerDifference]);
   }
 });
 

@@ -10,7 +10,7 @@ const NameForm = props => {
     };
 
     const handleSubmit = (values) => {
-        axios.post('/api/player', values).then(res => {
+        axios.post('https://3300-project-2-backend.vercel.app/api/player', values).then(res => {
             console.log(JSON.stringify(res.data[0]));
             props.setPlayerOneData(res.data[0]);
             props.setPlayerTwoData(res.data[1]);

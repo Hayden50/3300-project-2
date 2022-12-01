@@ -33,15 +33,15 @@
 .tile-title {
   margin-left: 8px;
   font-weight: bold;
-  font-size: 25px;
-  font-style: italic;
-  color: white;
+  font-family: 'Press Start 2P';
+  font-size: 12px;
+  color: black;
 }
 
 .tile-data {
   margin-right: 8px;
-  font-style: italic;
-  font-weight: bold;
   font-size: 25px;
   color: #ff3b3f;
+  font-family: 'Press Start 2P';
+  font-size: 20px;
 }

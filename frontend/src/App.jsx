@@ -18,10 +18,12 @@ const App = () => {
     avgSteals: 0,
     fgPct: 0,
   }
+
   JSON.stringify(temp);
 
   return (
     <div className = "parent">
+      <link href='https://fonts.googleapis.com/css?family=Press Start 2P' rel='stylesheet'></link>
       <div className='div1'>
         <NameForm setPlayerOneData={setPlayerOneData} setPlayerTwoData={setPlayerTwoData} setDiffData={setComparison}/>
       </div>

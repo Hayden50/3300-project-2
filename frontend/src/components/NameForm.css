@@ -11,6 +11,12 @@
   display: flex;
   font-weight: bold;
   justify-content: center;
+  font-family: 'Press Start 2P';
+  color: #ff3b3f;
+  font-size: 32px;
+  text-shadow: 3px 3px 3px black;
+
+
 }
 
 .compare-button {

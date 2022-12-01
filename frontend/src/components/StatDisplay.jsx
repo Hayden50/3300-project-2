@@ -12,7 +12,7 @@ const StatDisplay = props => {
             <DisplayTile title={"Rebounds"} data={stats.avgRebounds}/>
             <DisplayTile title={"Blocks"} data={stats.avgBlocks}/>
             <DisplayTile title={"Steals"} data={stats.avgSteals}/>
-            <DisplayTile title={"Field Goal Percent"} data={stats.fgPct}/>
+            <DisplayTile title={"FG Percentage"} data={stats.fgPct}/>
         </div>
     )
 }
